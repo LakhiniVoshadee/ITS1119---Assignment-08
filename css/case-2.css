@@ -19,8 +19,9 @@ section {
 
 .box {
   width: 100px;
+  height: 50px;
   display: inline-block;
-  aspect-ratio: 1/0.5;
+  /* aspect-ratio: 1/0.5; */
   background-color: #493737;
   border-radius: 10px;
 }
