@@ -1,37 +1,41 @@
-const light_count = 6;
-let current_light = -1;
-let direction = "Right";
+const light_count = 7;
+let current_light = 0;
+let direction = "RIGHT";
 let intervalId = null;
+const music = document.getElementById("music");
+
 updateLight = () => {
-  if (direction === "Right") {
+  if (direction === "RIGHT") {
     current_light++;
-    $(".light").css("background", "white");
+    $(".light").css("background", "rgb(255, 94, 0)");
     $(".light").eq(current_light).css("background", "red");
     $(".light")
       .eq(current_light - 1)
-      .css("background", "pink");
+      .css("background", "rgb(214, 119, 42)");
 
     if (current_light == light_count - 1) {
-      direction = "Left";
+      direction = "LEFT";
     }
   } else {
     current_light--;
-    $(".light").css("background", "white");
+    $(".light").css("background", "rgb(255, 94, 0)");
     $(".light").eq(current_light).css("background", "red");
     $(".light")
-      .eq(current_light - 1)
-      .css("background", "pink");
+      .eq(current_light + 1)
+      .css("background", "rgb(214, 119, 42)");
 
-    if (current_light == 0) {
-      direction = "Right";
+    if (current_light === 0) {
+      direction = "RIGHT";
     }
   }
 };
 
 $("#start").on("click", function () {
   intervalId = setInterval(updateLight, 100);
+  music.play();
 });
 
 $("#stop").on("click", function () {
   clearInterval(intervalId);
+  music.pause();
 });
